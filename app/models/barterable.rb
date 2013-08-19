@@ -1,5 +1,5 @@
 class Barterable < ActiveRecord::Base
 
   validates :description, presence: true,
-               length: { within: 1..128 }
+                          length: maximum: 128 }
 end

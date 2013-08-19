@@ -5,7 +5,7 @@ class Signup < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, presence: true,
-                   length: { within: 1..32 }
+                   length: { maximum: 32 }
 
   validates :email, presence: true,
                     uniqueness: true,
