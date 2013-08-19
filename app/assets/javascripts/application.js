@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(function() {
+
+  // bootstrap js is ugly and heavy. shimit
+  $('button.close').on('click', function() {
+    var $this = $(this);
+    var $parent = $this.hasClass('alert') ? $this : $this.parent();
+    $parent.remove();
+  });
+
+});
