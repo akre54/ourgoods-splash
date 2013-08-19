@@ -12,7 +12,7 @@ class SignupsController < ApplicationController
       session[:signup_id] = @signup.id
       redirect_to success_path
     else
-      flash[:error] = "There was an error signing you up:\n#{@signup.errors.full_messages.join("\n")}"
+      flash[:error] = @signup.errors.full_messages
       render 'signups/new', status: :unprocessable_entity
     end
   end
