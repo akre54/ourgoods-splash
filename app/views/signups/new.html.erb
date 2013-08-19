@@ -1,31 +1,15 @@
-<div class="text-block col-lg-4 col-lg-offset-1">
-  <address class="col-lg-offset-1">
-    <strong>Asset Mapping For Artists</strong><br>
-    Monday, September 23rd<br>
-    6:30-8:30pm<br>
-    New York Live Arts<br>
-    219 W 19th St (btw 7th and 8th Aves)
-  </address>
-  <p>
-    EVENT DESCRIPTION Disrupt scenester
-    VHS ethical. Austin adipisicing ullamco
-    veniam, swag scenester eiusmod ennui
-    banh mi. Blog delectus sartorial,
-    dreamcatcher plaid skateboard in cliche
-    selfies freegan High Life. Flexitarian
-    mustache plaid elit master cleanse
-    selfies. Salvia flexitarian consequat
-    incididunt cornhole semiotics sustainable
-    3 wolf moon narwhal. High Life locavore
-    bicycle rights anim, bitters helvetica
-    selvage meh cliche Schlitz. Accusamus
-    YOLO retro et cray pork belly.
-  </p>
-</div><!-- //col1 -->
-<div class="flip-container col-lg-5 col-lg-offset-2 text-block">
+<%= render 'left_col' %>
+<div class="right-col flip-container col-lg-5 col-lg-offset-2 text-block">
   <div class="flipper">
     <div class="front">
       <h2>Have something to share?</h2>
+
+      <% flash.each do |type, message| %>
+        <div class="alert <%= bootstrap_class_for(type) %> fade in">
+          <button class="close" data-dismiss="alert">×</button>
+          <%= message %>
+        </div>
+      <% end %>
 
       <%= form_for(@signup, remote: true, html: { class: 'form-horizontal col-lg-9', role: 'form' }) do |f| %>
         <div class="form-group">
@@ -42,7 +26,7 @@
         </div>
         <p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p>
         <p>
-          <%= f.button "HOWS IT WORK?", id: 'how-it-works', class: "btn btn-info btn-med" %>
+          <%= f.button "HOWS IT WORK?", type: "button", id: 'how-it-works', class: "btn btn-info btn-med" %>
           <%= f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med" %>
         </p>
       <% end %>
@@ -64,4 +48,4 @@
       </div>
     </div><!-- //back -->
   </div><!-- //flipper -->
-</div><!-- //col2 / flip-container -->
+</div><!-- //right-col / flip-container -->

@@ -4,3 +4,7 @@
 
 $ ->
   $("#how-it-works, #lets-do-it").click -> $('.flip-container').toggleClass('flipped')
+
+  $('#new_signup').on 'ajax:success', (ev, data) ->
+    rightCol = $(data).find('.right-col')
+    $('.right-col').replaceWith(rightCol)

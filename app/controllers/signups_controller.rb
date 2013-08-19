@@ -4,23 +4,28 @@ class SignupsController < ApplicationController
   end
 
   def create
-    @signup = Signup.new
-    @signup.email = params[:email]
-    @signup.name = params[:name]
-    @signup.have = Barterable.find_or_create_by_description(params[:have])
-    @signup.need = Barterable.find_or_create_by_description(params[:need])
+    @signup = Signup.new signup_params
+    @signup.have = Barterable.find_or_create_by(description: params[:signup][:have])
+    @signup.need = Barterable.find_or_create_by(description: params[:signup][:need])
 
     if @signup.save
       session[:signup_id] = @signup.id
       redirect_to success_path
     else
-      flash[:notice] = "There was an error creating your entry"
+      flash[:error] = "There was an error creating your entry"
       render 'signups/new', status: :unprocessable_entity
     end
   end
 
   def success
+    redirect_to new_signup_path unless session[:signup_id]
+
     @signup = Signup.find session[:signup_id]
     session[:signup_id] = nil
+  end
+
+private
+  def signup_params
+    params.require(:signup).permit(:email, :name)
   end
 end
