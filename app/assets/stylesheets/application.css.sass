@@ -1,7 +1,5 @@
-/*
- *= require_self
- *= require_tree .
- */
+@import "bourbon"
+@import "signups"
 
 // http://css-tricks.com/perfect-full-page-background-image/
 html
@@ -26,8 +24,12 @@ h1
   font-size: 40px
   margin-bottom: 20px
 
-h1 a
-  color: black
+  a
+    color: black
 
-  &:hover
-    text-decoration: none
+    &:hover
+      text-decoration: none
+
+// override BS3's rounded corners where we dont want them
+.btn, .form-control, .panel
+  border-radius: 0
