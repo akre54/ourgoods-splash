@@ -5,6 +5,9 @@
 $ ->
   $("#how-it-works, #lets-do-it").click -> $('.flip-container').toggleClass('flipped')
 
-  $('#new_signup').on 'ajax:success', (ev, data) ->
-    rightCol = $(data).find('.right-col')
+  updateColumn = (html) ->
+    rightCol = $(html).find('.right-col')
     $('.right-col').replaceWith(rightCol)
+
+  $('#new_signup').on 'ajax:success', (ev, data) -> updateColumn data
+  $('#new_signup').on 'ajax:error', (ev, xhr) -> updateColumn xhr.responseText
