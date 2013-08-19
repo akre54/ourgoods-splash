@@ -26,24 +26,24 @@
 
   <h2>Have something to share?</h2>
 
-  <form class="form-horizontal col-lg-9" role="form">
+  <%= form_for(@signup, remote: true, html: { class: 'form-horizontal col-lg-9', role: 'form' }) do |f| %>
     <div class="form-group">
-      <input id="input-email" type="text" class="form-control" name="email" placeholder="Email" />
+      <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="name" placeholder="Name" />
+      <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
     </div>
     <div class="form-group">
-      <input id="input-i-have" type="text" class="form-control" name="have" placeholder="I have..." />
+      <%= f.text_field :have, class: "form-control", placeholder: "I have..." %>
     </div>
     <div class="form-group">
-      <input id="input-i-want" type="text" class="form-control" name="need" placeholder="I need..." />
+      <%= f.text_field :need, class: "form-control", placeholder: "I need..." %>
     </div>
     <p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p>
     <p class="text-center">
-      <button type="submit" class="btn btn-success btn-lg">SIGN ME UP</button>
+      <%= f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-lg" %>
     </p>
-  </form>
+  <% end %>
 </div><!-- //col2 -->
 <div class="text-block col-lg-8 col-lg-offset-3 attribution">
   <small class="text-muted"><a href="http://www.flickr.com/photos/erwlas/6133364748/">Background picture by erwlas @flickr</a>. Used under <a href="http://creativecommons.org/licenses/by/2.0/deed.en">Creative Commons - Attribution</a>.</small>
