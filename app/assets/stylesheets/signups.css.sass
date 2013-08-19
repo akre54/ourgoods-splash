@@ -1,10 +1,17 @@
 // Override B3 .panel adding a subtly transparent background
-.panel
-  background-color: rgba(255, 255, 255, 0.9)
-  padding: 30px
 
-.text-block
-  margin-bottom: 40px
+.left-col
+  @extend .col-lg-4
+  @extend .col-lg-offset-1
+  @extend .text-block
+
+.right-col
+  @extend .col-lg-5
+  @extend .col-lg-offset-2
+  @extend .text-block
+
+address
+  @extend .col-lg-offset-1
 
 
 ////////////////////////////////////////////

@@ -1,12 +1,11 @@
+@import "bootstrap"
 @import "bourbon"
+@import "mixins"
+
 @import "signups"
 
-// http://css-tricks.com/perfect-full-page-background-image/
 html
   background: image-url('bg.jpg') no-repeat center center fixed
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  -o-background-size: cover
   background-size: cover
 
 body
@@ -15,11 +14,21 @@ body
   font-family: "Open Sans",serif
   background: transparent
 
+header
+  @extend .row
+
+footer
+  @extend .text-block
+  @extend .col-lg-8
+  @extend .col-lg-offset-3
+
 h1, h2
   font-family: "Abel", Arial, sans-serif
   margin-top: 0
 
 h1
+  @extend .col-lg-1
+  @extend .col-lg-offset-1
   font-weight: 400
   font-size: 40px
   margin-bottom: 20px
@@ -29,6 +38,10 @@ h1
 
     &:hover
       text-decoration: none
+
+.panel
+  background-color: rgba(255, 255, 255, 0.9)
+  padding: 30px
 
 // override BS3's rounded corners where we dont want them
 .btn, .form-control, .panel
