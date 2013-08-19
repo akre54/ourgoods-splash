@@ -5,8 +5,8 @@ class SignupsController < ApplicationController
 
   def create
     @signup = Signup.new signup_params
-    @signup.have = Barterable.find_or_create_by(description: params[:signup][:have])
-    @signup.need = Barterable.find_or_create_by(description: params[:signup][:need])
+    @signup.have = Barterable.find_or_create_by(description: params[:signup][:have][:description])
+    @signup.need = Barterable.find_or_create_by(description: params[:signup][:need][:description])
 
     if @signup.save
       session[:signup_id] = @signup.id

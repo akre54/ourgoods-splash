@@ -24,10 +24,14 @@
           <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
         </div>
         <div class="form-group">
-          <%= f.text_field :have, class: "form-control", placeholder: "I have..." %>
+          <%= f.fields_for :have do |h| %>
+            <%= h.text_field :description, class: "form-control", placeholder: "I have..." %>
+          <% end %>
         </div>
         <div class="form-group">
-          <%= f.text_field :need, class: "form-control", placeholder: "I need..." %>
+          <%= f.fields_for :need do |n| %>
+            <%= n.text_field :description, class: "form-control", placeholder: "I need..." %>
+          <% end %>
         </div>
         <p class="help-block text-center"><small>We won't send you spam. Unsubscribe at any time.</small></p>
         <p>
