@@ -39,6 +39,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'debugger-pry', require: 'debugger/pry'
+  gem 'debugger'
+end
+
 group :production do
   gem 'rails_12factor'
 end
