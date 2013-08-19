@@ -1,12 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+#= require modernizr/modernizr
 
 $ ->
 
-  if Modernizr.transform
-    $('#how-it-works').remove()
+  unless Modernizr.csstransforms3d
+    $('#how-it-works, #lets-do-it').remove()
     $('.front, .back').css('position', 'relative')
+    return
+
+  # fix for absolute positioning giving no height. urgh.
+  resizeColumn = -> $('.right-col').height $('.front').height()
 
   $(document).on 'click', "#how-it-works, #lets-do-it", -> $('.flip-container').toggleClass('flipped')
 
@@ -23,9 +25,5 @@ $ ->
 
   $('#new_signup').on 'ajax:success', (ev, data) -> updateColumn data
   $('#new_signup').on 'ajax:error', (ev, xhr) -> updateColumn xhr.responseText
-
-
-  # fix for absolute positioning giving no height. urgh.
-  resizeColumn = -> $('.right-col').height($('.front').height())
 
   resizeColumn()
