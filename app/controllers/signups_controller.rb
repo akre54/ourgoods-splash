@@ -4,6 +4,7 @@ class SignupsController < ApplicationController
   end
 
   def create
+    flash[:error] = nil
     @signup = Signup.new signup_params
     @signup.have = Barterable.find_or_create_by(description: params[:signup][:have][:description])
     @signup.need = Barterable.find_or_create_by(description: params[:signup][:need][:description])
