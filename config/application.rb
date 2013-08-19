@@ -26,5 +26,8 @@ module OurgoodsSplash
     # config.i18n.default_locale = :de
 
     config.sass.preferred_syntax = :sass
+
+    # include Bower components in compiled assets
+    config.assets.paths << Rails.root.join('app', 'assets', 'bower_components')
   end
 end

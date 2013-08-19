@@ -1,0 +1,21 @@
+{
+  "name": "ourgoods-splash",
+  "version": "0.1.0",
+  "authors": [
+    "Adam Krebs <amk528@cs.nyu.edu>"
+  ],
+  "description": "signup splash page for ourgoods",
+  "license": "MIT",
+  "homepage": "https://ourgoods.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.6.2"
+  }
+}

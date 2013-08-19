@@ -3,6 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+
+  if Modernizr.transform
+    $('#how-it-works').remove()
+    $('.front, .back').css('position', 'relative')
+
   $(document).on 'click', "#how-it-works, #lets-do-it", -> $('.flip-container').toggleClass('flipped')
 
   $(document).on 'click', 'button.close', ->
