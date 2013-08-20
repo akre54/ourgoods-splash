@@ -17,7 +17,6 @@ address
   @extend .form-horizontal
   @extend .col-lg-9
 
-
 ////////////////////////////////////////////
 // FLIP EFFECT
 ////////////////////////////////////////////
@@ -48,3 +47,13 @@ address
 // back, initially hidden pane
 .back
   @include transform(rotateY(180deg))
+
+// fallback for older browsers. class added by modernizr
+.no-csstransforms3d
+  .front, .back
+    position: relative
+  .front
+    margin-bottom: 40px
+
+  #how-it-works, #lets-do-it
+    display: none
