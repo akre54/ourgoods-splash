@@ -5,18 +5,19 @@
     <div class="front">
       <h2>Have something to share?</h2>
 
-      <% flash.each do |type, messages| %>
-        <div class="alert <%= bootstrap_class_for(type) %> fade in">
-          <button class="close" data-dismiss="alert">×</button>
-          <ul>
-            <% messages.each do |text| %>
-            <li><%= text %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
       <%= form_for(@signup, remote: true, html: { role: 'form' }) do |f| %>
+
+        <% flash.each do |type, messages| %>
+          <div class="alert <%= bootstrap_class_for(type) %> fade in">
+            <button class="close" data-dismiss="alert">×</button>
+            <ul>
+              <% messages.each do |text| %>
+              <li><%= text %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
         </div>
@@ -33,11 +34,13 @@
             <%= n.text_field :description, class: "form-control", placeholder: "I need..." %>
           <% end %>
         </div>
-        <p class="help-block"><small>We won't send you spam. Unsubscribe at any time.</small></p>
-        <p>
-          <%= f.button "HOWS IT WORK?", type: "button", id: 'how-it-works', class: "btn btn-info btn-med" %>
-          <%= f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med" %>
-        </p>
+        <div class="form-group">
+          <p class="help-block"><small>We won't send you spam. Unsubscribe at any time.</small></p>
+          <div class="buttons">
+            <%= f.button "HOWS IT WORK?", type: "button", id: 'how-it-works', class: "btn btn-info btn-med" %>
+            <%= f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med" %>
+          </div>
+        </div>
       <% end %>
     </div><!-- //front -->
     <div class="back">
