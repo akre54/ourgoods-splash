@@ -15,10 +15,10 @@
         .form-group
           = f.text_field :name, class: "form-control", placeholder: "Name"
         .form-group
-          - f.fields_for :have do |ff|
+          = f.fields_for :have do |ff|
             = ff.text_field :description, class: "form-control", placeholder: "I have..."
         .form-group
-          - f.fields_for :need do |ff|
+          = f.fields_for :need do |ff|
             = ff.text_field :description, class: "form-control", placeholder: "I need..."
         .form-group
           %p.help-block.col-lg-10
