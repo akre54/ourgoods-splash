@@ -4,11 +4,10 @@ class SignupsController < ApplicationController
   end
 
   def create
-    permitted_params = signup_params
-    [:have, :need].each do |sym|
-      permitted_params[sym] = Barterable.find_or_create_by description: permitted_params[sym][:description]
-    end
-    @signup = Signup.new permitted_params
+    @signup = Signup.new signup_params
+
+    @signup.have = Barterable.find_or_create_by description: params[:signup][have][:description]
+    @signup.need = Barterable.find_or_create_by description: params[:signup][need][:description]
 
     if @signup.save
       session[:signup_id] = @signup.id
