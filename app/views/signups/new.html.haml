@@ -1,0 +1,40 @@
+= render 'left_col'
+.right-col.flip-container.col-md-5.col-sm-offset-2
+  .flipper
+    .front
+      %h2 Have something to share?
+      = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
+        - flash.each do |type, messages|
+          %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
+            %button.close{"data-dismiss" => "alert"} ×
+            %ul
+              - messages.each do |text|
+                %li= text
+        .form-group
+          = f.text_field :email, class: "form-control", placeholder: "Email"
+        .form-group
+          = f.text_field :name, class: "form-control", placeholder: "Name"
+        .form-group
+          = f.fields_for :have do |h|
+            = h.text_field :description, class: "form-control", placeholder: "I have..."
+        .form-group
+          = f.fields_for :need do |n|
+            = n.text_field :description, class: "form-control", placeholder: "I need..."
+        .form-group
+          %p.help-block.col-lg-10
+            %small We won't send you spam. Unsubscribe at any time.
+          .buttons
+            = f.button "HOWS IT WORK?", type: "button", id: 'how-it-works', class: "btn btn-info btn-med"
+            = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+    .back
+      %h2 How it works
+      .col-lg-9
+        %p
+          Don't know what you HAVE or NEED? Here's some helpful copy
+          that will magically transform your brain.
+        %ul
+          %li suggestion lorem ipsum dolor foo bar baz bop
+          %li bim bam wazzle
+          %li Fingerstache occupy nesciunt commodo meh. IPhone VHS kogi next level, cornhole Tonx culpa minim
+          %li Odd Future ugh. Anim Tonx banh mi letterpress four loko
+        #lets-do-it.btn.btn-success.btn-med LETS DO IT
