@@ -1,6 +1,6 @@
 class Signup < ActiveRecord::Base
-  belongs_to :have, class_name: "Barterable", foreign_key: "have_id"
-  belongs_to :need, class_name: "Barterable", foreign_key: "need_id"
+  belongs_to :have, class_name: "Barterable", foreign_key: "have_id", autosave: true
+  belongs_to :need, class_name: "Barterable", foreign_key: "need_id", autosave: true
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
