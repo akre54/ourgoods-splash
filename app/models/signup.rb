@@ -8,7 +8,9 @@ class Signup < ActiveRecord::Base
                    length: { maximum: 32 }
 
   validates :email, presence: true,
-                    uniqueness: true,
                     length: { maximum: 255 },
                     format: { with: email_regex }
+
+  validates_uniqueness_of :email,
+                          message: "It looks like you've already signed up with that email. Contact jen@ourgoods.org if this in error."
 end
