@@ -5,8 +5,8 @@
       %h2 Have something to share?
       = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
         - flash.each do |type, messages|
-          %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
-            %button.close{"data-dismiss" => "alert"} ×
+          %div{class: "alert #{bootstrap_class_for(type)} fade in"}
+            %button.close{ data: { dismiss: "alert" }} ×
             %ul
               - messages.each do |text|
                 %li= text

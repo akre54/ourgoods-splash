@@ -2,7 +2,7 @@
 %html.no-js
   %head
     %title OurGoods - Digital Event
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     = stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -11,10 +11,10 @@
     .container.panel
       %header
         %h1.col-lg-1.col-lg-offset-1
-          %a{:href => "https://ourgoods.org/"} OurGoods
+          %a{href: "https://ourgoods.org/"} OurGoods
       .row
         = yield
       %footer
         %small.text-muted
-          %a{:href => "https://ourgoods.org/"} OurGoods
+          %a{href: "https://ourgoods.org/"} OurGoods
           \&bull; 2013
