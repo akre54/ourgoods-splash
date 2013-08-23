@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{ content: 'text/html; charset=UTF-8' 'http-equiv' => 'Content-Type' }
+  %body
+    %h1
+      New signup from #{link_to @signup.name "mailto: #{@signup.email}"}
+    %h2
+      Their details:
+    %p
+      They have: #{@signup.have}, They need: #{@signup.need}
+    %br/
