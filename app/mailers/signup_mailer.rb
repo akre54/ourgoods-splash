@@ -3,7 +3,6 @@ class SignupMailer < ActionMailer::Base
 
   def welcome_email(signup)
     @signup = signup
-    binding.pry
     mail(to: @user.email, subject: 'Thanks for signing up to OurGoods')
   end
 
