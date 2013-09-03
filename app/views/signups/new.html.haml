@@ -1,7 +1,7 @@
 = render 'left_col'
 .right-col.flip-container.col-md-5.col-sm-offset-2
   .flipper
-    .front
+    .front.active
       %h2 Have something to share?
       = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
         - flash.each do |type, messages|
