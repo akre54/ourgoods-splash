@@ -4,9 +4,11 @@ $ ->
   return unless Modernizr.csstransforms3d
 
   # fix for absolute positioning giving no height. urgh.
-  resizeColumn = -> $('.right-col').height $('.front').height()
+  resizeColumn = -> $('.right-col').height Math.max $('.front').height(), $('.back').height()
 
-  $(document).on 'click', "#how-it-works, #lets-do-it", -> $('.flip-container').toggleClass('flipped')
+  $(document).on 'click', "#how-it-works, #lets-do-it", ->
+    $('.flip-container').toggleClass('flipped')
+    resizeColumn()
 
   $(document).on 'click', 'button.close', ->
     $this = $(this)
