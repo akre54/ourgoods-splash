@@ -14,8 +14,8 @@ class SignupsController < ApplicationController
 
     if @signup.save
       session[:signup_id] = @signup.id
-      SignupMailer.welcome_email(@signup).deliver
-      SignupMailer.new_registration(@signup).deliver
+      # SignupMailer.welcome_email(@signup).deliver
+      # SignupMailer.new_registration(@signup).deliver
       redirect_to success_path
     else
       flash.now[:error] = @signup.errors.full_messages
