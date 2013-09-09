@@ -3,7 +3,7 @@ class SignupMailer < ActionMailer::Base
 
   def welcome_email(signup)
     @signup = signup
-    mail(to: @user.email, subject: 'Thanks for signing up to OurGoods')
+    mail(to: @signup.email, subject: 'Thanks for signing up to OurGoods')
   end
 
   def new_registration(signup)
