@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{ content: 'text/html; charset=UTF-8' 'http-equiv' => 'Content-Type' }
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
   %body
     %h1
       Thanks for signing up, #{@signup.name}!
@@ -11,7 +11,8 @@
       I have: #{@signup.have}, I need: #{@signup.need}
     %br/
     %p
-      If you have any questions, be sure to contact #{link_to "jen@ourgoods.org", "mailto: jen@ourgoods.org"}
+      If you have any questions, be sure to contact
+      = link_to "jen@ourgoods.org", "mailto: jen@ourgoods.org"
 
     %h2
       The details

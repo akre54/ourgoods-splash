@@ -1,10 +1,11 @@
 !!!
 %html
   %head
-    %meta{ content: 'text/html; charset=UTF-8' 'http-equiv' => 'Content-Type' }
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }
   %body
     %h1
-      New signup from #{link_to @signup.name "mailto: #{@signup.email}"}
+      New signup from
+      = link_to @signup.name, "mailto: #{@signup.email}"
     %h2
       Their details:
     %p
