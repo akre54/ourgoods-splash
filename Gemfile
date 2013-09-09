@@ -38,6 +38,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'meta_request'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'debugger-pry', require: 'debugger/pry'
