@@ -30,6 +30,14 @@ class SignupsController < ApplicationController
     session[:signup_id] = nil
   end
 
+  def spreadsheet
+    @signups = Signup.all
+    respond_to do |format|
+      format.html
+      format.xls { send_data @signups.to_xls, :filename => 'signups.xls' }
+    end
+  end
+
 private
   def signup_params
     params.require(:signup).permit(:email, :name, have_attributes: :description, need_attributes: :description)
