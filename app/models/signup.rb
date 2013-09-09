@@ -15,4 +15,8 @@ class Signup < ActiveRecord::Base
 
   validates_uniqueness_of :email,
                           message: "It looks like you've already signed up with that email. Contact jen@ourgoods.org if this in error."
+
+  def first_name
+    name.split(' ')[0]
+  end
 end
