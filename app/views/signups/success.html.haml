@@ -3,7 +3,7 @@
   %h2
     Thanks for signing up, #{@signup.first_name}!
   %p
-    We look forward to seeing you at Asset Mapping For Artists on Monday, September 30th from 6:30-8:30pm at New York Live Arts 219 W 19th St (between 7th and 8th Aves).
+    We look forward to seeing you at #{@signup.event.title} on #{@signup.event.date} from #{@signup.event.time} at #{@signup.event.venue} #{@signup.event.address}.
   %p
     If you have questions or need to change your
     signup information, email #{link_to "jen@ourgoods.org", "mailto: jen@ourgoods.org"}
