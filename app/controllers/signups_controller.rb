@@ -34,6 +34,7 @@ class SignupsController < ApplicationController
     @signups = Signup.all
     respond_to do |format|
       format.html
+      format.csv { render text: @signups.to_csv }
       format.xls
     end
   end

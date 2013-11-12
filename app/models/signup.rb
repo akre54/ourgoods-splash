@@ -19,4 +19,16 @@ class Signup < ActiveRecord::Base
   def first_name
     name.split(' ')[0]
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |product|
+        attrs = product.attributes.values_at(*column_names)
+        attrs[3] = Barterable.find(attrs[3]).description
+        attrs[4] = Barterable.find(attrs[4]).description
+        csv << attrs
+      end
+    end
+  end
 end
