@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819054358) do
+ActiveRecord::Schema.define(version: 20131112062302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "barterables", force: true do |t|
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.string   "date"
+    t.string   "time"
+    t.string   "venue"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +39,7 @@ ActiveRecord::Schema.define(version: 20130819054358) do
     t.integer  "need_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
   add_index "signups", ["email"], name: "index_signups_on_email", using: :btree
