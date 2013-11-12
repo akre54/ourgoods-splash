@@ -1,14 +1,14 @@
 .left-col.col-md-5.col-lg-4.col-lg-offset-1
   %address.col-md-offset-1
-    %strong Asset Mapping For Artists
+    %strong= next_event_info[:title]
     %br/
-    Tuesday, December 17th
+    = next_event_info[:date]
     %br/
-    6:30-8:30pm
+    = next_event_info[:time]
     %br/
-    New York Live Arts
+    = next_event_info[:venue]
     %br/
-    219 W 19th St (btw 7th and 8th Aves)
+    = next_event_info[:address]
   %p
     How do we operate from a place of abundance rather than scarcity?  Can we utilize the skills, strengths, and resources that already exist in our communities to bolster and support each other’s work?  Could this process of exchange lead to a more vibrant cultural ecology, the realization of each other’s intrinsic and expansive value, and strategies that result in everyone ending up with more than they started with?
   %p
