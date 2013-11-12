@@ -16,6 +16,7 @@ class Signup < ActiveRecord::Base
                     format: { with: email_regex }
 
   validates_uniqueness_of :email,
+                          scope: :event_id,
                           message: "It looks like you've already signed up with that email. Contact jen@ourgoods.org if this in error."
 
   def first_name
