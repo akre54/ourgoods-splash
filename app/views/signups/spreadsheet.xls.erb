@@ -8,6 +8,7 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Event Date</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Have</Data></Cell>
@@ -16,6 +17,7 @@
     <% @signups.each do |signup| %>
       <Row>
         <Cell><Data ss:Type="Number"><%= signup.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.event.date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.have.description %></Data></Cell>
