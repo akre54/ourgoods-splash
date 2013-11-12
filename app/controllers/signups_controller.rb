@@ -34,7 +34,7 @@ class SignupsController < ApplicationController
     @signups = Signup.all
     respond_to do |format|
       format.html
-      format.xls { send_data @signups.to_xls, :filename => 'signups.xls' }
+      format.xls
     end
   end
 
