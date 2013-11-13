@@ -3,11 +3,11 @@ class SignupMailer < ActionMailer::Base
 
   def welcome_email(signup)
     @signup = signup
-    mail(to: @signup.email, subject: 'Thanks for signing up to OurGoods')
+    mail(to: @signup.email, subject: 'Thanks for signing up to the OurGoods event on #{@signup.event.date}!')
   end
 
   def new_registration(signup)
     @signup = signup
-    mail(to: "jen@ourgoods.org", from: "notifications@ourgoods.org", subject: "New Signup for event")
+    mail(to: "jen@ourgoods.org", from: "notifications@ourgoods.org", subject: "New Signup for #{@signup.event.date} event")
   end
 end
