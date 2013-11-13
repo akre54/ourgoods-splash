@@ -30,6 +30,7 @@ class Signup < ActiveRecord::Base
         attrs = product.attributes.values_at(*column_names)
         attrs[3] = Barterable.find(attrs[3]).description
         attrs[4] = Barterable.find(attrs[4]).description
+        attrs[7] = Event.find(attrs[7]).date
         csv << attrs
       end
     end
