@@ -1,14 +1,16 @@
 .left-col.col-md-5.col-lg-4.col-lg-offset-1
   %address.col-md-offset-1
-    %strong= event.title
-    %br/
-    = event.date
-    %br/
-    = event.time
-    %br/
-    = event.venue
-    %br/
-    = event.address
+    - active_events.each do |event|
+      %strong= event.title
+      %br/
+      = event.date
+      %br/
+      = event.time
+      %br/
+      = event.venue
+      %br/
+      = event.address
+      %hr/
   %p
     How do we operate from a place of abundance rather than scarcity?  Can we utilize the skills, strengths, and resources that already exist in our communities to bolster and support each other’s work?  Could this process of exchange lead to a more vibrant cultural ecology, the realization of each other’s intrinsic and expansive value, and strategies that result in everyone ending up with more than they started with?
   %p

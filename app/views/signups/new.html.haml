@@ -21,6 +21,11 @@
           = f.fields_for :need do |ff|
             = ff.text_field :description, class: "form-control", placeholder: "I need..."
         .form-group
+          - active_events.each do |event|
+            = f.label :event_id, :date do
+              = f.radio_button :event_id, event.id
+              = event.date
+        .form-group
           %p.help-block.col-lg-10
             %small We won't send you spam. Unsubscribe at any time.
           .buttons

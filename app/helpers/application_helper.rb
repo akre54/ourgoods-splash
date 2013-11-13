@@ -9,8 +9,8 @@ module ApplicationHelper
     }[flash_type] || flash_type.to_s
   end
 
-  def event
+  def active_events
     # Always the most recent event
-    Event.last
+    Event.where active: true
   end
 end
