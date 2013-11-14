@@ -22,7 +22,7 @@
             = ff.text_field :description, class: "form-control", placeholder: "I need..."
         .form-group
           - active_events.each do |event|
-            = f.label :event_id, :date do
+            %label
               = f.radio_button :event_id, event.id
               = event.date
         .form-group
