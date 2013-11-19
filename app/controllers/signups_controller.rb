@@ -13,8 +13,6 @@ class SignupsController < ApplicationController
     @signup.have = Barterable.find_or_create_by valid_params[:have_attributes]
     @signup.need = Barterable.find_or_create_by valid_params[:need_attributes]
 
-    @signup.event = Event.last
-
     if @signup.save
       session[:signup_id] = @signup.id
       SignupMailer.welcome_email(@signup).deliver
