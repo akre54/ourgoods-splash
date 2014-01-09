@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+
+  time:
+    formats:
+      event_date: "%A, %B %e"
+      event_time: "%l:%M %P"
+      event_time_short: "%l:%M"

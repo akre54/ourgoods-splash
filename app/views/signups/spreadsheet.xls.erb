@@ -17,7 +17,7 @@
     <% @signups.each do |signup| %>
       <Row>
         <Cell><Data ss:Type="Number"><%= signup.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= signup.event.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= l signup.event.event_begin_time, format: :event_date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.have.description %></Data></Cell>

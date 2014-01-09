@@ -1,7 +1,7 @@
 class SignupsController < ApplicationController
   def new
     @signup = Signup.new
-    @signup.event = Event.where(active: true).first
+    @signup.event = Event.active.first
     @signup.have = Barterable.new
     @signup.need = Barterable.new
   end

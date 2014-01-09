@@ -3,9 +3,11 @@
     - active_events.each do |event|
       %strong= event.title
       %br/
-      = event.date
+      = l event.event_begin_time, format: :event_date
       %br/
-      = event.time
+      = l event.event_begin_time, format: :event_time_short
+      \-
+      = l event.event_finish_time, format: :event_time
       %br/
       = event.venue
       %br/

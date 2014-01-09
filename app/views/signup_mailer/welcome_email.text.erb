@@ -9,7 +9,7 @@ If you have any questions, be sure to contact Jen (jen@ourgoods.org)
 Remember the event is:
 -----------------------
 <%= @signup.event.title %>
-<%= @signup.event.date %>
-<%= @signup.event.time %>
+<%= l @signup.event.event_begin_time, format: :event_date %>
+<%= l @signup.event.event_begin_time, format: :event_time %>
 <%= @signup.event.venue %>
 <%= @signup.event.address %>

@@ -20,9 +20,9 @@
     %address
       %strong= @signup.event.title
       %br/
-      = @signup.event.date
+      = l @signup.event.event_begin_time, format: :event_date
       %br/
-      = @signup.event.time
+      = l @signup.event.event_begin_time, format: :event_time
       %br/
       = @signup.event.venue
       %br/

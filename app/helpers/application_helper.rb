@@ -11,6 +11,6 @@ module ApplicationHelper
 
   def active_events
     # Always the most recent event
-    Event.where active: true
+    Event.active
   end
 end

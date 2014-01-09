@@ -8,8 +8,12 @@ class ChangeDateToDatetime < ActiveRecord::Migration
       d = Date.parse evt.date
       b = Time.parse "#{time.first}pm"
       f = Time.parse time.last
-      evt.update_attribute :event_begin_time, DateTime.new(d.year, d.month, d.day, b.hour, b.min, b.sec)
-      evt.update_attribute :event_finish_time, DateTime.new(d.year, d.month, d.day, f.hour, f.min, f.sec)
+
+      # ugly hack...
+      year = d.month != 1 ? 2103 : 2014
+
+      evt.update_attribute :event_begin_time, DateTime.new(year, d.month, d.day, b.hour, b.min, b.sec)
+      evt.update_attribute :event_finish_time, DateTime.new(year, d.month, d.day, f.hour, f.min, f.sec)
     end
 
     change_column_null :events, :event_begin_time, false

@@ -24,7 +24,7 @@
           - active_events.each do |event|
             %label
               = f.radio_button :event_id, event.id
-              = event.date
+              = l event.event_begin_time, format: :event_date
         .form-group
           %p.help-block.col-lg-10
             %small We won't send you spam. Unsubscribe at any time.
