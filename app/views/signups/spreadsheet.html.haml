@@ -1,0 +1,25 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th
+        ID
+      %th
+        Event Date
+      %th
+        Name
+      %th
+        Email
+      %th
+        Have
+      %th
+        Need
+  %tbody
+    - @signups.each do |signup|
+      %tr
+        %td= signup.id
+        %td= l signup.event.event_begin_time, format: :event_date
+        %td= signup.name
+        %td= signup.email
+        %td= signup.have.description
+        %td= signup.need.description
+
