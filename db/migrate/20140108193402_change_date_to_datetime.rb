@@ -10,7 +10,7 @@ class ChangeDateToDatetime < ActiveRecord::Migration
       f = Time.parse time.last
 
       # ugly hack...
-      year = d.month != 1 ? 2103 : 2014
+      year = d.month != 1 ? 2013 : 2014
 
       evt.update_attribute :event_begin_time, DateTime.new(year, d.month, d.day, b.hour, b.min, b.sec)
       evt.update_attribute :event_finish_time, DateTime.new(year, d.month, d.day, f.hour, f.min, f.sec)
