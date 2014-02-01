@@ -1,18 +1,8 @@
 .left-col.col-md-5.col-lg-offset-1
   %address.col-md-offset-1
-    - active_events.each do |event|
-      %strong= event.title
-      %br/
-      = l event.event_begin_time, format: :event_date
-      %br/
-      = l event.event_begin_time, format: :event_time_short
-      \-
-      = l event.event_finish_time, format: :event_time
-      %br/
-      = event.venue
-      %br/
-      = event.address
-      %hr/
+  %strong
+    Idea Party!
+
   %p
     What's between you and your artistic goals? Want to some help getting from here to there from your peers?
 
