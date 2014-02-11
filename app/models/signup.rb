@@ -26,11 +26,11 @@ class Signup < ActiveRecord::Base
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
-      all.each do |product|
-        attrs = product.attributes.values_at(*column_names)
+      all.each do |signup|
+        attrs = signup.attributes.values_at(*column_names)
         attrs[3] = Barterable.find(attrs[3]).description
         attrs[4] = Barterable.find(attrs[4]).description
-        attrs[7] = Event.find(attrs[7]).date
+        attrs[7] = I18n.l Event.find(attrs[7]).event_begin_time, format: :event_date
         csv << attrs
       end
     end
