@@ -1,6 +1,15 @@
 #= require modernizr/modernizr
 
 $ ->
+  $('.event-info').hide()
+  setActive = (info) -> $('.active-event').children().first().replaceWith(info.show())
+  findActive = (target) -> target.parent().next('.event-info').clone()
+
+  setActive findActive $('input[type="radio"]:checked')
+  $('input[type="radio"]').on 'click', (e) ->
+    setActive findActive $(e.target)
+
+  # 3D Transforms
   return unless Modernizr.csstransforms3d
 
   # fix for absolute positioning giving no height. urgh.
