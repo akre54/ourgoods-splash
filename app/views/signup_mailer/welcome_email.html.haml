@@ -22,7 +22,9 @@
       %br/
       = l @signup.event.event_begin_time, format: :event_date
       %br/
-      = l @signup.event.event_begin_time, format: :event_time
+      = l @signup.event.event_begin_time, format: :event_time_short
+      \-
+      = l @signup.event.event_finish_time, format: :event_time
       %br/
       = @signup.event.venue
       %br/
