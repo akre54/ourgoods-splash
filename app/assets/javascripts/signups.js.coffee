@@ -1,17 +1,6 @@
 #= require modernizr/modernizr
 
 $ ->
-  setupRadioButtons = ->
-    $('.event-info').hide()
-    setActive = (info) -> $('.active-event').children().first().replaceWith(info.show())
-    findActive = (target) -> target.parent().next('.event-info').clone()
-
-    setActive findActive $('input[type="radio"]:checked')
-    $('input[type="radio"]').on 'click', (e) ->
-      setActive findActive $(e.target)
-
-  setupRadioButtons()
-
   # 3D Transforms
   return unless Modernizr.csstransforms3d
 
@@ -32,7 +21,6 @@ $ ->
   $(document).on 'ajax:complete', '#new_signup', (ev, xhr) ->
     rightCol = $(xhr.responseText).find('.right-col')
     $('.right-col').replaceWith(rightCol)
-    setupRadioButtons()
     resizeColumn()
 
   resizeColumn()
