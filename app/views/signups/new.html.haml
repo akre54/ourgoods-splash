@@ -25,7 +25,7 @@
             %label
               = f.radio_button :event_id, event.id
               = l event.event_begin_time, format: :event_date
-              %i
+              %b
                 = l event.event_begin_time, format: :event_time_short
                 \-
                 = l event.event_finish_time, format: :event_time
