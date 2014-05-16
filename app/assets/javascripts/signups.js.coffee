@@ -7,7 +7,7 @@ $ ->
   # fix for absolute positioning giving no height. urgh.
   resizeColumn = -> $('.right-col').height $('.active').height()
 
-  $(document).on 'click', "#how-it-works, #lets-do-it", ->
+  $(document).on 'click', '#go-to-next-page', ->
     $('.flip-container').toggleClass('flipped')
     $('.front, .back').toggleClass('active')
     resizeColumn()

@@ -15,11 +15,11 @@
         .form-group
           = f.text_field :name, class: "form-control", placeholder: "Name"
         .form-group
-          = f.fields_for :have do |ff|
-            = ff.text_field :description, class: "form-control", placeholder: "I have..."
+          = f.fields_for :item do |ff|
+            = ff.text_field :description, class: "form-control", placeholder: "I have access to..."
         .form-group
-          = f.fields_for :need do |ff|
-            = ff.text_field :description, class: "form-control", placeholder: "I need..."
+          = f.fields_for :skill do |ff|
+            = ff.text_field :description, class: "form-control", placeholder: "I have a skill in..."
         .form-group
           - active_events.each do |event|
             %label
@@ -39,13 +39,13 @@
           %p.help-block.col-lg-10
             %small We won't send you spam. Unsubscribe at any time.
           .buttons
-            = f.button "WHAT CAN I SHARE?", type: "button", id: 'how-it-works', class: "btn btn-info btn-med"
-            = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+            %button#go-to-next-page.btn.btn-success.btn-med NEXT PAGE
     .back
       %h2 What can I share?
       %p
         At the event, we will guide you through activities to identify the skills, tools, and spaces you already have. To sign up, we ask you to list one thing that you HAVE to offer, and one thing that you NEED from someone else. This helps us start the event with abundance.
       %p
         To figure out what you HAVE to offer, answer these questions: What do you love to do? What do your friends ask you to do for them? What have you done for work? Think about your artistic skills and the skills you get paid for, but think about your hobbies as well. Listening, childcare, cooking, and access to a rooftop or car are all very valuable. To identify what you NEED from someone else, think about materials, spaces, and tools that would help you complete a project or make your life run more smoothly.
-      #lets-do-it.btn.btn-success.btn-med SIGN ME UP
+      .buttons
+        = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
 

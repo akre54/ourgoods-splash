@@ -1,10 +1,10 @@
 class Signup < ActiveRecord::Base
   belongs_to :event
 
-  belongs_to :have, class_name: "Barterable", foreign_key: "have_id"
-  belongs_to :need, class_name: "Barterable", foreign_key: "need_id"
+  belongs_to :item,      class_name: "Barterable", foreign_key: "item_id"
+  belongs_to :skill,     class_name: "Barterable", foreign_key: "skill_id"
 
-  accepts_nested_attributes_for :have, :need
+  accepts_nested_attributes_for :item, :skill
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

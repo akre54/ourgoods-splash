@@ -9,5 +9,11 @@
     %h2
       Their details:
     %p
-      They have: #{@signup.have.description}, They need: #{@signup.need.description}
+
+      - if @singnup.community
+        They listed their community as #{@signup.community}
+      - if @signup.item
+        They have access to: #{@signup.item.description},
+      - if @signup.skill
+        They listed their skill as: #{@signup.skill.description}
     %br/

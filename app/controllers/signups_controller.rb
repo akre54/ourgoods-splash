@@ -2,16 +2,16 @@ class SignupsController < ApplicationController
   def new
     @signup = Signup.new
     @signup.event = Event.active.first
-    @signup.have = Barterable.new
-    @signup.need = Barterable.new
+    @signup.skill = Barterable.new
+    @signup.item = Barterable.new
   end
 
   def create
     valid_params = signup_params
     @signup = Signup.new valid_params
 
-    @signup.have = Barterable.find_or_create_by valid_params[:have_attributes]
-    @signup.need = Barterable.find_or_create_by valid_params[:need_attributes]
+    # @signup.item      = Barterable.find_or_create_by valid_params[:item_attributes]
+    # @signup.skill     = Barterable.find_or_create_by valid_params[:skill_attributes]
 
     if @signup.save
       session[:signup_id] = @signup.id
@@ -42,6 +42,6 @@ class SignupsController < ApplicationController
 
 private
   def signup_params
-    params.require(:signup).permit(:email, :name, :event_id, have_attributes: :description, need_attributes: :description)
+    params.require(:signup).permit(:email, :name, :community, :event_id, item_attributes: :description, skill_attributes: :description)
   end
 end
