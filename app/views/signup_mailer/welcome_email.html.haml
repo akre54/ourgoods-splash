@@ -6,11 +6,18 @@
     %p
       Thanks for signing up, #{@signup.first_name}!
     %p
-      You have:
-      %strong= @signup.have.description
-      %br/
-      You need:
-      %strong= @signup.need.description
+      - if @signup.community
+        You listed your community as:
+        %strong= @signup.community      You have access to:
+        %br /
+      - if @signup.item
+        %strong= @signup.item.description
+        %br/
+      - if @signup.skill
+        You have expertise in:
+        %strong= @signup.skill.description
+        %br/
+
     %p
       If you have any questions, be sure to contact
       = link_to "jen@ourgoods.org", "mailto: jen@ourgoods.org"

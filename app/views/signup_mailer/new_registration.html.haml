@@ -10,10 +10,10 @@
       Their details:
     %p
 
-      - if @singnup.community
+      - if @signup.community
         They listed their community as #{@signup.community}
       - if @signup.item
         They have access to: #{@signup.item.description},
       - if @signup.skill
-        They listed their skill as: #{@signup.skill.description}
+        They listed their expertise as: #{@signup.skill.description}
     %br/

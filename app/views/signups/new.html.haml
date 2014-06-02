@@ -1,9 +1,12 @@
 = render 'left_col'
 .right-col.flip-container.col-md-5.col-sm-offset-1
-  .flipper
-    .front.active
-      %h2 Have something to share?
-      = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
+  = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
+    .flipper
+      .front.active
+        .page-indicator
+          %p 1
+          %p 2
+        %h2 Have something to share?
         - flash.each do |type, messages|
           %div{class: "alert #{bootstrap_class_for(type)} fade in"}
             %button.close{ data: { dismiss: "alert" }} ×
@@ -40,12 +43,15 @@
             %small We won't send you spam. Unsubscribe at any time.
           .buttons
             %button#go-to-next-page.btn.btn-success.btn-med NEXT PAGE
-    .back
-      %h2 What can I share?
-      %p
-        At the event, we will guide you through activities to identify the skills, tools, and spaces you already have. To sign up, we ask you to list one thing that you HAVE to offer, and one thing that you NEED from someone else. This helps us start the event with abundance.
-      %p
-        To figure out what you HAVE to offer, answer these questions: What do you love to do? What do your friends ask you to do for them? What have you done for work? Think about your artistic skills and the skills you get paid for, but think about your hobbies as well. Listening, childcare, cooking, and access to a rooftop or car are all very valuable. To identify what you NEED from someone else, think about materials, spaces, and tools that would help you complete a project or make your life run more smoothly.
-      .buttons
-        = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+      .back
+        .page-indicator
+          %p 1
+          %p 2
+        %h2 What can I share?
+        %p
+          At the event, we will guide you through activities to identify the skills, tools, and spaces you already have. To sign up, we ask you to list one thing that you HAVE to offer, and one thing that you NEED from someone else. This helps us start the event with abundance.
+        %p
+          To figure out what you HAVE to offer, answer these questions: What do you love to do? What do your friends ask you to do for them? What have you done for work? Think about your artistic skills and the skills you get paid for, but think about your hobbies as well. Listening, childcare, cooking, and access to a rooftop or car are all very valuable. To identify what you NEED from someone else, think about materials, spaces, and tools that would help you complete a project or make your life run more smoothly.
+        .buttons
+          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
 

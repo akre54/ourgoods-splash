@@ -2,8 +2,17 @@ Thanks for signing up, <%= @signup.first_name %>!
 =======================================
 
 Your details:
-* You have: <%= @signup.have.description %>
-* You need: <%= @signup.need.description %>
+
+<% if @signup.item %>
+* You have access to: <%= @signup.have.description %>
+<% end %>
+<% if @signup.skill %>
+* You have expertise in: <%= @signup.skill.description %>
+<% end %>
+<% if @signup.community %>
+* You listed your community as: <%= @signup.community %>
+<% end %>
+
 
 If you have any questions, be sure to contact Jen (jen@ourgoods.org)
 

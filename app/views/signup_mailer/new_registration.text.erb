@@ -2,5 +2,12 @@ Hey Jen & Caroline,
 
 New signup from <%= @signup.name %> (<%= @signup.email %>).
 
-* They have: <%= @signup.have.description %>
-* They need: <%= @signup.need.description %>
+<% if @signup.item %>
+* They have access to: <%= @signup.item.description %>
+<% end %>
+<% if @signup.skill %>
+* They have expertise in: <%= @signup.skill.description %>
+<% end %>
+<% if @signup.community %>
+* They listed their community as: <%= @signup.community %>
+<% end %>
