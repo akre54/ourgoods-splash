@@ -42,7 +42,7 @@ class SignupsController < ApplicationController
   end
 
   def spreadsheet
-    @signups = Signup.all
+    @signups = Signup.order 'id'
     respond_to do |format|
       format.html
       format.csv { render text: @signups.to_csv }
