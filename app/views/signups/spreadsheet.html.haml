@@ -10,9 +10,15 @@
       %th
         Email
       %th
+        Community
+      %th
         Have
       %th
         Need
+      %th
+        Item
+      %th
+        Skill
   %tbody
     - @signups.each do |signup|
       %tr
@@ -20,6 +26,9 @@
         %td= l signup.event.event_begin_time, format: :event_date
         %td= signup.name
         %td= signup.email
-        %td= signup.have.description
-        %td= signup.need.description
+        %td= signup.community
+        %td= signup.have  && signup.have.description  || ''
+        %td= signup.need  && signup.need.description  || ''
+        %td= signup.item  && signup.item.description  || ''
+        %td= signup.skill && signup.skill.description || ''
 

@@ -11,8 +11,11 @@
         <Cell><Data ss:Type="String">Event Date</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Community</Data></Cell>
         <Cell><Data ss:Type="String">Have</Data></Cell>
         <Cell><Data ss:Type="String">Need</Data></Cell>
+        <Cell><Data ss:Type="String">Item</Data></Cell>
+        <Cell><Data ss:Type="String">Skill</Data></Cell>
       </Row>
     <% @signups.each do |signup| %>
       <Row>
@@ -20,8 +23,11 @@
         <Cell><Data ss:Type="String"><%= l signup.event.event_begin_time, format: :event_date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.email %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= signup.have.description %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= signup.need.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.community %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.have  && signup.have.description  || '' %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.need  && signup.need.description  || '' %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.item  && signup.item.description  || '' %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.skill && signup.skill.description || '' %></Data></Cell>
       </Row>
     <% end %>
     </Table>
