@@ -10,8 +10,16 @@ class SignupsController < ApplicationController
     valid_params = signup_params
     @signup = Signup.new valid_params
 
-    # @signup.item      = Barterable.find_or_create_by valid_params[:item_attributes]
-    # @signup.skill     = Barterable.find_or_create_by valid_params[:skill_attributes]
+    unless valid_params[:item_attributes][:description].blank?
+      @signup.item = Barterable.find_or_create_by valid_params[:item_attributes]
+    else
+      @signup.item = nil
+    end
+    unless valid_params[:skill_attributes][:description].blank?
+      @signup.skill = Barterable.find_or_create_by valid_params[:skill_attributes]
+    else
+      @signup.skill = nil
+    end
 
     if @signup.save
       session[:signup_id] = @signup.id
@@ -19,6 +27,8 @@ class SignupsController < ApplicationController
       SignupMailer.new_registration(@signup).deliver
       redirect_to success_path
     else
+      @signup.skill = Barterable.new valid_params[:item_attributes]
+      @signup.item = Barterable.new valid_params[:skill_attributes]
       flash.now[:error] = @signup.errors.full_messages
       render 'signups/new', status: :unprocessable_entity
     end

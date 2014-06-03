@@ -19,6 +19,8 @@ class Signup < ActiveRecord::Base
                           scope: :event_id,
                           message: "It looks like you've already signed up for this event with that email. Contact jen@ourgoods.org if this in error."
 
+  validate :has_at_least_one_barterable
+
   def first_name
     name.split(' ')[0]
   end
@@ -33,6 +35,14 @@ class Signup < ActiveRecord::Base
         attrs[7] = I18n.l Event.find(attrs[7]).event_begin_time, format: :event_date
         csv << attrs
       end
+    end
+  end
+
+private
+
+  def has_at_least_one_barterable
+    if community.blank? && !item.present? && !skill.present?
+      self.errors[:base] << "Please answer one question"
     end
   end
 end
