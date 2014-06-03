@@ -8,9 +8,10 @@
     %p
       - if @signup.community
         You listed your community as:
-        %strong= @signup.community      You have access to:
+        %strong= @signup.community
         %br /
       - if @signup.item
+        You have access to:
         %strong= @signup.item.description
         %br/
       - if @signup.skill

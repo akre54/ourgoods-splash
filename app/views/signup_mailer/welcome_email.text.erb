@@ -4,7 +4,7 @@ Thanks for signing up, <%= @signup.first_name %>!
 Your details:
 
 <% if @signup.item %>
-* You have access to: <%= @signup.have.description %>
+* You have access to: <%= @signup.item.description %>
 <% end %>
 <% if @signup.skill %>
 * You have expertise in: <%= @signup.skill.description %>
