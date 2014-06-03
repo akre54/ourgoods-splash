@@ -20,11 +20,16 @@
   p
     background: white
     float: left
-    width: 20px
-    height: 20px
+    width: 30px
+    height: 30px
     padding: 10px
+    margin-left 2px
+    line-height: 14px
 
-.active .page-indicator p
+.active.front .page-indicator p:first-child
+  background: yellow
+
+.active.back .page-indicator p:last-child
   background: yellow
 
 #new_signup

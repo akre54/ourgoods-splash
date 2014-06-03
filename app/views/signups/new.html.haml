@@ -3,7 +3,7 @@
   = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
     .flipper
       .front.active
-        .page-indicator
+        .page-indicator.page-toggle
           %p 1
           %p 2
         %h2 Idea Party! Sign-up
@@ -40,7 +40,7 @@
           .buttons
             %button.page-toggle.btn.btn-success.btn-med{type: "button"} NEXT PAGE
       .back
-        .page-indicator
+        .page-indicator.page-toggle
           %p 1
           %p 2
         %h2 What can you offer?
