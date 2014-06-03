@@ -6,23 +6,19 @@
         .page-indicator
           %p 1
           %p 2
-        %h2 Have something to share?
+        %h2 Idea Party! Sign-up
         - flash.each do |type, messages|
           %div{class: "alert #{bootstrap_class_for(type)} fade in"}
             %button.close{ data: { dismiss: "alert" }} ×
             %ul
               - messages.each do |text|
                 %li= text
+        %h3 My contact info
         .form-group
           = f.text_field :email, class: "form-control", placeholder: "Email"
         .form-group
           = f.text_field :name, class: "form-control", placeholder: "Name"
-        .form-group
-          = f.fields_for :item do |ff|
-            = ff.text_field :description, class: "form-control", placeholder: "I have access to..."
-        .form-group
-          = f.fields_for :skill do |ff|
-            = ff.text_field :description, class: "form-control", placeholder: "I have a skill in..."
+        %h3 I'm coming on
         .form-group
           - active_events.each do |event|
             %label
@@ -42,16 +38,54 @@
           %p.help-block.col-lg-10
             %small We won't send you spam. Unsubscribe at any time.
           .buttons
-            %button#go-to-next-page.btn.btn-success.btn-med NEXT PAGE
+            %button.page-toggle.btn.btn-success.btn-med{type: "button"} NEXT PAGE
       .back
         .page-indicator
           %p 1
           %p 2
-        %h2 What can I share?
-        %p
-          At the event, we will guide you through activities to identify the skills, tools, and spaces you already have. To sign up, we ask you to list one thing that you HAVE to offer, and one thing that you NEED from someone else. This helps us start the event with abundance.
-        %p
-          To figure out what you HAVE to offer, answer these questions: What do you love to do? What do your friends ask you to do for them? What have you done for work? Think about your artistic skills and the skills you get paid for, but think about your hobbies as well. Listening, childcare, cooking, and access to a rooftop or car are all very valuable. To identify what you NEED from someone else, think about materials, spaces, and tools that would help you complete a project or make your life run more smoothly.
+        %h2 What can you offer?
+        .form-group
+          .col-md-6
+            %p I spend time with
+            = f.text_field :community, class: "form-control", placeholder: "group or community"
+            %p I can tell you about this group and/or how to connect to other people in this group.
+          .examples.col-md-6
+            %strong For example:
+            %ul
+              %li parents of small children
+              %li teaching artists
+              %li bicycle maintenance folks
+              %li Brooklyn Quakers
+              %li social practice visual artists
+        .form-group
+          .col-md-6
+            = f.fields_for :item do |ff|
+              %p I have access to
+              = ff.text_field :description, class: "form-control", placeholder: "tools, equiptment, or space"
+              %p that I can help you make use of
+          .examples.col-md-6
+            %strong For example:
+            %ul
+              %li a cargo van
+              %li a large rehearsal space
+              %li a black and white copier
+              %li a silkscreen setup
+              %li an industrial sewing machine
+        .form-group
+          .col-md-6
+            = f.fields_for :skill do |ff|
+              %p I have expertise in
+              = ff.text_field :description, class: "form-control", placeholder: "skill or trade"
+              %p that I can share with you.
+          .examples.col-md-6
+            %strong For example:
+            %ul
+              %li graphic design
+              %li healing
+              %li social media
+              %li videography
+              %li listening
         .buttons
-          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+          %a.page-toggle go back
+          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med pull-right"
 
