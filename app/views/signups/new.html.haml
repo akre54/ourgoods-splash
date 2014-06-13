@@ -1,5 +1,5 @@
 = render 'left_col'
-.right-col.flip-container.col-md-5.col-sm-offset-1
+.right-col.flip-container.col-md-6.col-sm-offset-1
   = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
     .flipper
       .front.active
@@ -46,11 +46,11 @@
           %p 2
         %h2 What can you offer?
         .form-group
-          .col-md-6
+          .col-md-5
             %p I spend time with
             = f.text_field :community, class: "form-control", placeholder: "group or community"
             %p I can tell you about this group and/or how to connect to other people in this group.
-          .examples.col-md-6
+          .examples.col-md-7
             %strong For example:
             %ul
               %li parents of small children
@@ -59,12 +59,12 @@
               %li Brooklyn Quakers
               %li social practice visual artists
         .form-group
-          .col-md-6
+          .col-md-5
             = f.fields_for :item do |ff|
               %p I have access to
               = ff.text_field :description, class: "form-control", placeholder: "tools, equiptment, or space"
               %p that I can help you make use of
-          .examples.col-md-6
+          .examples.col-md-7
             %strong For example:
             %ul
               %li a cargo van
@@ -73,12 +73,12 @@
               %li a silkscreen setup
               %li an industrial sewing machine
         .form-group
-          .col-md-6
+          .col-md-5
             = f.fields_for :skill do |ff|
               %p I have expertise in
               = ff.text_field :description, class: "form-control", placeholder: "skill or trade"
               %p that I can share with you.
-          .examples.col-md-6
+          .examples.col-md-7
             %strong For example:
             %ul
               %li graphic design
@@ -88,5 +88,6 @@
               %li listening
         .buttons
           %a.page-toggle go back
-          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med pull-right"
+          &nbsp;
+          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
 
