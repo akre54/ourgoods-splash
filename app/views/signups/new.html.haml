@@ -29,12 +29,15 @@
                 = l event.event_begin_time, format: :event_time_short
                 \-
                 = l event.event_finish_time, format: :event_time
-        .form-group
-          = active_events.first.venue
-          %br/
-          = active_events.first.address
-        .active-event.form-group
-          .placeholder
+        - active_events.each do |event|
+          %address.venue-address.form-group
+            - if event.note.present?
+              %strong
+                = event.note
+              %br/
+            = event.venue
+            %br/
+            = event.address
         .form-group
           %p.help-block.col-lg-10
             %small We won't send you spam. Unsubscribe at any time.
