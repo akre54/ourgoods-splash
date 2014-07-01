@@ -1,4 +1,5 @@
-// Override B3 .panel adding a subtly transparent background
+$right-col-color: #ffeb99
+$page-indicator-active-color: lighten($right-col-color, 10%)
 
 .left-col
   @extend .text-block
@@ -8,15 +9,15 @@
   @include transition(height .5s ease)
   padding: 0
 
-.right-col h1
-  color: rgb(255, 197, 0)
-
 .help-block
   padding: 0
 
 .examples ul
   padding-left: 0
   list-style: none
+
+.flipper-contain
+  padding: 20px
 
 .page-indicator
   position: absolute
@@ -31,14 +32,19 @@
     line-height: 14px
     cursor: pointer
 
+.go-back
+  cursor: pointer
+
 .front, .back
-  background-color: rgb(255, 197, 0)
+  // background-color: rgb(255, 197, 0)
+  background-color: $right-col-color
+  // background-color: rgb(255, 221, 74)
 
 .active.front .page-indicator p:first-child
-  background: yellow
+  background: $page-indicator-active-color
 
 .active.back .page-indicator p:last-child
-  background: yellow
+  background: $page-indicator-active-color
 
 #new_signup
   width: 97%
