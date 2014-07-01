@@ -45,8 +45,10 @@ class Signup < ActiveRecord::Base
 private
 
   def has_at_least_one_barterable
+    return unless self.errors.empty?
+
     if community.blank? && !item.present? && !skill.present?
-      self.errors[:base] << "Please answer one question"
+      self.errors[:base] << "This page looks great! Please click next page and answer one question."
     end
   end
 end
