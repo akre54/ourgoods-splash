@@ -1,96 +1,97 @@
 = render 'left_col'
-.right-col.flip-container.col-md-6.col-sm-offset-1
+
+.right-col.flip-container.col-md-5.col-sm-offset-1
+  %header
+    %h1
+      Idea Party! Sign-up
   = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
     .flipper
       .front.active
-        .page-indicator.page-toggle
-          %p 1
-          %p 2
-        %h2 Idea Party! Sign-up
-        - flash.each do |type, messages|
-          %div{class: "alert #{bootstrap_class_for(type)} fade in"}
-            %button.close{ data: { dismiss: "alert" }} ×
-            %ul
-              - messages.each do |text|
-                %li= text
-        %h3 My contact info
-        .form-group
-          = f.text_field :email, class: "form-control", placeholder: "Email"
-        .form-group
-          = f.text_field :name, class: "form-control", placeholder: "Name"
-        %h3 I'm coming on
-        .form-group
+        = render partial: "pagination"
+        .flipper-contain
+          - flash.each do |type, messages|
+            %div{class: "alert #{bootstrap_class_for(type)} fade in"}
+              %button.close{ data: { dismiss: "alert" }} ×
+              %ul
+                - messages.each do |text|
+                  %li= text
+          %h3 My contact info
+          .form-group
+            = f.text_field :email, class: "form-control", placeholder: "Email"
+          .form-group
+            = f.text_field :name, class: "form-control", placeholder: "Name"
+          %h3 I'm coming on
+          .form-group
+            - active_events.each do |event|
+              %label
+                = f.radio_button :event_id, event.id
+                = l event.event_begin_time, format: :event_date
+                &nbsp; &nbsp;
+                %b
+                  = l event.event_begin_time, format: :event_time_short
+                  \-
+                  = l event.event_finish_time, format: :event_time
           - active_events.each do |event|
-            %label
-              = f.radio_button :event_id, event.id
-              = l event.event_begin_time, format: :event_date
-              &nbsp; &nbsp;
-              %b
-                = l event.event_begin_time, format: :event_time_short
-                \-
-                = l event.event_finish_time, format: :event_time
-        - active_events.each do |event|
-          %address.venue-address.form-group
-            - if event.note.present?
-              %strong
-                = event.note
+            %address.venue-address.form-group
+              - if event.note.present?
+                %strong
+                  = event.note
+                %br/
+              = event.venue
               %br/
-            = event.venue
-            %br/
-            = event.address
-        .form-group
-          %p.help-block.col-lg-10
-            %small We won't send you spam. Unsubscribe at any time.
-          .buttons
-            %button.page-toggle.btn.btn-success.btn-med{type: "button"} NEXT PAGE
+              = event.address
+          .form-group
+            %p.help-block.col-lg-10
+              %small We won't send you spam. Unsubscribe at any time.
+            .buttons
+              %button.page-toggle.btn.btn-success.btn-med{type: "button"} NEXT PAGE
       .back
-        .page-indicator.page-toggle
-          %p 1
-          %p 2
-        %h2 What can you offer?
-        .form-group
-          .col-md-5
-            %p I spend time with
-            = f.text_field :community, class: "form-control", placeholder: "group or community"
-            %p I can tell you about this group and/or how to connect to other people in this group.
-          .examples.col-md-7
-            %strong For example:
-            %ul
-              %li parents of small children
-              %li teaching artists
-              %li bicycle maintenance folks
-              %li Brooklyn Quakers
-              %li social practice visual artists
-        .form-group
-          .col-md-5
-            = f.fields_for :item do |ff|
-              %p I have access to
-              = ff.text_field :description, class: "form-control", placeholder: "tools, equiptment, or space"
-              %p that I can help you make use of
-          .examples.col-md-7
-            %strong For example:
-            %ul
-              %li a cargo van
-              %li a large rehearsal space
-              %li a black and white copier
-              %li a silkscreen setup
-              %li an industrial sewing machine
-        .form-group
-          .col-md-5
-            = f.fields_for :skill do |ff|
-              %p I have expertise in
-              = ff.text_field :description, class: "form-control", placeholder: "skill or trade"
-              %p that I can share with you.
-          .examples.col-md-7
-            %strong For example:
-            %ul
-              %li graphic design
-              %li healing
-              %li social media
-              %li videography
-              %li listening
-        .buttons
-          %a.page-toggle go back
-          &nbsp;
-          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+        = render partial: "pagination"
+        .flipper-contain
+          %h2 What can you offer?
+          .form-group.row
+            .col-md-5
+              %p I spend time with
+              = f.text_field :community, class: "form-control", placeholder: "group or community"
+              %p I can tell you about this group and/or how to connect to other people in this group.
+            .examples.col-md-7
+              %strong For example:
+              %ul
+                %li parents of small children
+                %li teaching artists
+                %li bicycle maintenance folks
+                %li Brooklyn Quakers
+                %li social practice visual artists
+          .form-group.row
+            .col-md-5
+              = f.fields_for :item do |ff|
+                %p I have access to
+                = ff.text_field :description, class: "form-control", placeholder: "tools, equiptment, or space"
+                %p that I can help you make use of
+            .examples.col-md-7
+              %strong For example:
+              %ul
+                %li a cargo van
+                %li a large rehearsal space
+                %li a black and white copier
+                %li a silkscreen setup
+                %li an industrial sewing machine
+          .form-group.row
+            .col-md-5
+              = f.fields_for :skill do |ff|
+                %p I have expertise in
+                = ff.text_field :description, class: "form-control", placeholder: "skill or trade"
+                %p that I can share with you.
+            .examples.col-md-7
+              %strong For example:
+              %ul
+                %li graphic design
+                %li healing
+                %li social media
+                %li videography
+                %li listening
+          .buttons
+            %a.page-toggle go back
+            &nbsp;
+            = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
 

@@ -5,7 +5,11 @@
 
 .right-col
   @extend .text-block
-  @include transition (height .5s ease)
+  @include transition(height .5s ease)
+  padding: 0
+
+.right-col h1
+  color: rgb(255, 197, 0)
 
 .help-block
   padding: 0
@@ -27,6 +31,9 @@
     line-height: 14px
     cursor: pointer
 
+.front, .back
+  background-color: rgb(255, 197, 0)
+
 .active.front .page-indicator p:first-child
   background: yellow
 
@@ -34,7 +41,6 @@
   background: yellow
 
 #new_signup
-  @extend .form-horizontal
   width: 97%
 
 .buttons
@@ -46,9 +52,6 @@ label
 @media (min-width: $screen-xs-max)
   #signup_email, #signup_name
     max-width: 55%
-
-  .page-indicator
-    right: 20%
 
 ////////////////////////////////////////////
 // FLIP EFFECT
@@ -87,5 +90,3 @@ label
     position: relative
   .front
     margin-bottom: 40px
-  #how-it-works, #lets-do-it
-    display: none
