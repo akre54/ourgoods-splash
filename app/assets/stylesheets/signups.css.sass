@@ -34,6 +34,9 @@ $page-indicator-active-color: lighten($right-col-color, 10%)
     line-height: 14px
     cursor: pointer
 
+    &.current
+      background: $page-indicator-active-color
+
 .go-back
   cursor: pointer
 
@@ -41,12 +44,6 @@ $page-indicator-active-color: lighten($right-col-color, 10%)
   // background-color: rgb(255, 197, 0)
   background-color: $right-col-color
   // background-color: rgb(255, 221, 74)
-
-.active.front .page-indicator p:first-child
-  background: $page-indicator-active-color
-
-.active.back .page-indicator p:last-child
-  background: $page-indicator-active-color
 
 #new_signup
   width: 97%

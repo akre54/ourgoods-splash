@@ -7,7 +7,9 @@
   = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
     .flipper
       .front.active
-        = render partial: "pagination"
+        .page-indicator.page-toggle
+          %p.current 1
+          %p 2
         .flipper-contain
           - flash.each do |type, messages|
             %div{class: "alert #{bootstrap_class_for(type)} fade in"}
@@ -46,7 +48,9 @@
             .buttons
               %button.page-toggle.btn.btn-success.btn-med{type: "button"} NEXT PAGE
       .back
-        = render partial: "pagination"
+        .page-indicator.page-toggle
+          %p 1
+          %p.current 2
         .flipper-contain
           %h2 What can you offer?
           .form-group.row
