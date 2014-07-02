@@ -6,7 +6,7 @@ $ ->
 
   # fix for absolute positioning giving no height. urgh.
   resizeColumn = ->
-    $('.right-col').height $('.right-col header').height() + $('.active').height()
+    $('.right-col').height $('.right-col h1').height() + $('.active').height()
 
   debounce = (func, wait) ->
     timeout = timestamp = null
