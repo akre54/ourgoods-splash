@@ -10,14 +10,16 @@ $ ->
 
   debounce = (func, wait) ->
     timeout = timestamp = null
-
-    later = ->
-      last = new Date() - timestamp;
-      if last < wait
-        timeout = setTimeout later, wait - last
-      else
-        timeout = null
-        func()
+    ->
+      timestamp = new Date()
+      later = ->
+        last = new Date() - timestamp;
+        if last < wait
+          timeout = setTimeout later, wait - last
+        else
+          timeout = null
+          func()
+      timeout = setTimeout later, wait
 
   updateShownEvent = ->
     idx = $('[name="signup[event_id]"]:checked').parent().index()
