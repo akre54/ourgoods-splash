@@ -5,7 +5,19 @@ $ ->
   return unless Modernizr.csstransforms3d
 
   # fix for absolute positioning giving no height. urgh.
-  resizeColumn = -> $('.right-col').height $('.active').height()
+  resizeColumn = ->
+    $('.right-col').height $('.right-col header').height() + $('.active').height()
+
+  debounce = (func, wait) ->
+    timeout = timestamp = null
+
+    later = ->
+      last = new Date() - timestamp;
+      if last < wait
+        timeout = setTimeout later, wait - last
+      else
+        timeout = null
+        func()
 
   updateShownEvent = ->
     idx = $('[name="signup[event_id]"]:checked').parent().index()
@@ -38,6 +50,8 @@ $ ->
     $('.right-col').replaceWith rightCol
     updateShownEvent()
     resizeColumn()
+
+  $(window).on 'resize', debounce resizeColumn, 200
 
   updateShownEvent()
   resizeColumn()
