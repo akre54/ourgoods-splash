@@ -1,9 +1,8 @@
 = render 'left_col'
 
 .right-col.flip-container.col-md-5.col-sm-offset-1
-  %header
-    %h1
-      Idea Party! Sign-up
+  %h1
+    Idea Party! Sign-up
   = form_for(@signup, remote: true, html: { role: 'form' }) do |f|
     .flipper
       .front.active
