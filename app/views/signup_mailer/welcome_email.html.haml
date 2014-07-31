@@ -6,36 +6,20 @@
     %p
       Thanks for signing up, #{@signup.first_name}!
     %p
-      - if @signup.community
-        You listed your community as:
-        %strong= @signup.community
-        %br/
-      - if @signup.item
-        You have access to:
-        %strong= @signup.item.description
-        %br/
-      - if @signup.skill
-        You have expertise in:
-        %strong= @signup.skill.description
-        %br/
-
+      We look forward to seeing you at the Idea Lab on
+      #{l @signup.event.event_begin_time, format: :event_date } from
+      #{l @signup.event.event_begin_time, format: :event_time_short } to
+      #{l @signup.event.event_finish_time, format: :event_time }
+      at
+      #{@signup.event.venue }: #{@signup.event.address }. If you have questions or need to change your sign-up information, please email <a href="mailto:jen@ourgoods.org">jen@ourgoods.org</a>.
     %p
-      If you have any questions, be sure to contact
-      = link_to "jen@ourgoods.org", "mailto: jen@ourgoods.org"
-    %h2
-      The details:
-    %address
-      %strong= @signup.event.title
-      %br/
-      = l @signup.event.event_begin_time, format: :event_date
-      %br/
-      = l @signup.event.event_begin_time, format: :event_time_short
-      \-
-      = l @signup.event.event_finish_time, format: :event_time
-      %br/
-      = @signup.event.venue
-      %br/
-      = @signup.event.address
-
+      Don’t forget - Idea Labs start on time! Latecomers may get shut out of the event.
     %p
-      We'll see you there!
+    %p
+      We hope you’re experiencing the abundance of OurGoods. There are cash costs associated with making this abundance visible - and OurGoods relies on philanthropy and member support to meet those costs. We rely on you. <a href="http://thefield.org/form/make-donation?sa=549966">Donate now!</a>
+    %p
+    %p
+      Together,
+    %p
+    %p
+      OurGoods

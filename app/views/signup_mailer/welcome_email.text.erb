@@ -1,25 +1,12 @@
 Thanks for signing up, <%= @signup.first_name %>!
-=======================================
+=======================<%= '=' * @signup.first_name.length %>=
 
-Your details:
+We look forward to seeing you at the Idea Lab on <%= l @signup.event.event_begin_time, format: :event_date %> from <%= l @signup.event.event_begin_time, format: :event_time_short %> to <%= l @signup.event.event_finish_time, format: :event_time %> at <%= @signup.event.venue %>: <%= @signup.event.address %>. If you have questions or need to change your sign-up information, please email jen@ourgoods.org.
 
-<% if @signup.item %>
-* You have access to: <%= @signup.item.description %>
-<% end %>
-<% if @signup.skill %>
-* You have expertise in: <%= @signup.skill.description %>
-<% end %>
-<% if @signup.community %>
-* You listed your community as: <%= @signup.community %>
-<% end %>
+Don’t forget - Idea Labs start on time! Latecomers may get shut out of the event.
 
+We hope you’re experiencing the abundance of OurGoods. There are cash costs associated with making this abundance visible - and OurGoods relies on philanthropy and member support to meet those costs. We rely on you. Donate now! [http://thefield.org/form/make-donation?sa=549966]
 
-If you have any questions, be sure to contact Jen (jen@ourgoods.org)
+Together,
 
-Remember the event is:
------------------------
-<%= @signup.event.title %>
-<%= l @signup.event.event_begin_time, format: :event_date %>
-<%= l @signup.event.event_begin_time, format: :event_time_short %> - <%= l @signup.event.event_finish_time, format: :event_time %>
-<%= @signup.event.venue %>
-<%= @signup.event.address %>
+OurGoods
