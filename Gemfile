@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -48,8 +48,8 @@ end
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'debugger-pry', require: 'debugger/pry'
-  gem 'debugger'
+  gem 'pry-byebug'
+  gem 'byebug'
 end
 
 group :production do
