@@ -5,4 +5,6 @@ OurgoodsSplash::Application.routes.draw do
   get 'spreadsheet', to: 'signups#spreadsheet', as: 'spreadsheet'
 
   resources :signups, only: [:new, :create]
+
+  resources :charges, only: [:new, :create]
 end

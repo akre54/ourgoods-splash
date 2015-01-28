@@ -9,12 +9,15 @@ To create a new event, open rails console on Heroku:
 ```ruby
 evt = Event.last.dup
 # update any date / time / location / description info
-evt.event_begin_time = Time.zone.parse "Dec 17, 2014 7:00PM"
-evt.event_finish_time = Time.zone.parse "Dec 17, 2014 9:00PM"
+evt.event_begin_time = Time.zone.parse "Jan 20, 2015 6:00PM"
+evt.event_finish_time = Time.zone.parse "Jan 20, 2015 8:00PM"
 # Update the venue and address, if needed
-evt.venue = "Brooklyn Arts Council"
-evt.address = "55 Washington Street"
+evt.venue = "Gibney Dance"
+evt.address = "280 Broadway"
 # If any notes about the event (such as for a specific group only)
-evt.note = "For Brooklyn Arts Council grantees only."
+evt.note = "For Brooklyn Art Council Grantees only"
+# If the event has a cost associated, add a price
+# evt.price = 10.00
+# Finally, save
 evt.save
 ```

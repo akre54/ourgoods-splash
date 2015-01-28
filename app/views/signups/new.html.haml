@@ -96,5 +96,11 @@
           .buttons
             %a.page-toggle.go-back go back
             &nbsp;
+          - if evt.price > 0
+            %noscript
+              This checkout form requires Javascript to work. Please enable Javascript in your browser or contact jen@ourgoods.org for assistance.
+            %script.stripe-button{ "data-amount" => "#{evt.price.to_i * 100}", "data-description" => "1 ticket (#{number_to_currency(evt.price)})", "data-image" => "/OG_LOGO.png", "data-key" => "<%= Rails.configuration.stripe[:publishable_key] %>", "data-name" => "OurGoods Idea Lab", :src => "https://checkout.stripe.com/checkout.js"}
+          - else
             = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+
 
