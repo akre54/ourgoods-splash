@@ -7,9 +7,6 @@
 # Ignore bundler config
 /.bundle
 
-# Ignore bower packages
-/app/assets/bower_components/*
-
 # Ignore specific db
 /config/database.yml
 
