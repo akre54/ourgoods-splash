@@ -19,6 +19,8 @@ class Signup < ActiveRecord::Base
                     length: { maximum: 255 },
                     format: { with: email_regex }
 
+  validates :stripe_token, presence: true, unless: Proc.new {|signup| signup.event.free? }
+
   validates_uniqueness_of :email,
                           scope: :event_id,
                           message: "It looks like you've already signed up for this event with that email. Contact jen@ourgoods.org if this in error."

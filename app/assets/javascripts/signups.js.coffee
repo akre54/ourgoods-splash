@@ -1,4 +1,5 @@
 #= require modernizr/modernizr
+#= require ./utils
 
 $ ->
   # 3D Transforms
@@ -8,23 +9,22 @@ $ ->
   resizeColumn = ->
     $('.right-col').height $('.right-col h1').height() + $('.active').height()
 
-  debounce = (func, wait) ->
-    timeout = timestamp = null
-    ->
-      timestamp = new Date()
-      later = ->
-        last = new Date() - timestamp;
-        if last < wait
-          timeout = setTimeout later, wait - last
-        else
-          timeout = null
-          func()
-      timeout = setTimeout later, wait
+  # The currently active selected event id
+  idx = 0
+  evt = OG.activeEvents[idx]
+  paid = false
 
   updateShownEvent = ->
     idx = $('[name="signup[event_id]"]:checked').parent().index()
+    evt = OG.activeEvents[idx]
     $('.venue-address').hide()
     $('.venue-address').eq(idx).show()
+
+    showOpenPayment = evt?.price > 0 and !paid
+
+    $('.open-payment').toggle showOpenPayment
+    $('.btn-submit').toggle !showOpenPayment
+
 
   flipPage = ->
     $('.flip-container').toggleClass 'flipped'
@@ -53,7 +53,39 @@ $ ->
     updateShownEvent()
     resizeColumn()
 
-  $(window).on 'resize', debounce resizeColumn, 200
+  $(window).on 'resize', utils.debounce resizeColumn, 200
 
   updateShownEvent()
   resizeColumn()
+
+
+  handler = StripeCheckout.configure
+    key: OG.Stripe.key
+    image: '/assets/ourgoods_logo.png'
+    token: (token) ->
+      # Use the token to create the charge with a server-side script.
+      # You can access the token ID with `token.id`
+
+      paid = true
+
+      updateShownEvent()
+
+      $('#signup_stripe_token').val token.id
+
+      $('#new_signup').submit()
+
+  $('.open-payment').on 'click', (e) ->
+    evtPrice = +evt.price
+
+    # Open Checkout with further options
+    handler.open
+      name: "OurGoods Idea Lab"
+      email: $("#signup_email").val()
+      description: "1 ticket ($#{evtPrice.toFixed(2)})"
+      amount: evtPrice * 100
+
+    e.preventDefault()
+
+  # Close Checkout on page navigation
+  $(window).on 'popstate', ->
+    handler.close()

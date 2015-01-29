@@ -104,10 +104,11 @@
             &nbsp;
           - evt = active_events.last # temp!
           - unless evt.free?
+            = f.hidden_field :stripe_token, value: nil
             %noscript
               This checkout form requires Javascript to work. Please enable Javascript in your browser or contact jen@ourgoods.org for assistance.
-            %script.stripe-button{ "data-amount" => "#{evt.price.to_i * 100}", "data-description" => "1 ticket (#{number_to_currency(evt.price)})", "data-image" => "/assets/ourgoods_logo.png", "data-key" => Rails.configuration.stripe[:publishable_key], "data-name" => "OurGoods Idea Lab", :src => "https://checkout.stripe.com/checkout.js"}
-          - else
-            = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med"
+            .btn.btn-med.btn-success.open-payment
+              Pay Now
+          = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med btn-submit"
 
 
