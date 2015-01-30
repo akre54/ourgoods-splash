@@ -13,7 +13,7 @@ class SignupsController < ApplicationController
     setup_item_and_skill(valid_params)
     verify_stripe_token()
 
-    if !@signup.errors.empty? && @signup.save
+    if @signup.errors.empty? && @signup.save
       session[:signup_id] = @signup.id
       SignupMailer.welcome_email(@signup).deliver
       SignupMailer.new_registration(@signup).deliver
