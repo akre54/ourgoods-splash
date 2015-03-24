@@ -1,5 +1,3 @@
-= render 'left_col'
-
 .right-col.flip-container.col-md-6.col-sm-offset-1
   %h1
     Idea Lab! Sign-up
@@ -102,11 +100,6 @@
           .buttons
             %a.page-toggle.go-back go back
             &nbsp;
-          = f.hidden_field :stripe_token, value: nil
-          %noscript
-            This checkout form requires Javascript to work. Please enable Javascript in your browser or contact jen@ourgoods.org for assistance.
-          .btn.btn-med.btn-success.open-payment
-            Pay Now
           = f.button "SIGN ME UP", type: "submit", class: "btn btn-success btn-med btn-submit"
 
 
