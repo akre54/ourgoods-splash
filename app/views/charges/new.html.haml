@@ -3,13 +3,19 @@
     Thanks! One more step.
 
   %p
+    This event requires a
+    = number_to_currency @signup.event.price
+    donation. Your signup won't get processed until the payment is complete.
+
+  %p
     We use <a href="https://stripe.com/">Stripe</a> to process your credit card
     securely off-site. No credit card info is stored with us.
 
   %p
-    Click below to launch a popup. Your email must match the one you provided us
-    with on the previous screen. If you can't see the popup or something is wrong,
-    contact Adam Krebs at adam.krebs@nyu.edu.
+    Click below to launch a popup and enter your credit card info. Your email
+    must match the one you provided us with on the previous screen. If you
+    can't see the popup or something is wrong, contact Adam Krebs at
+    adam.krebs@nyu.edu.
 
   = form_for(@signup, remote: true, url: charges_path, html: { role: 'form' }) do |f|
 
