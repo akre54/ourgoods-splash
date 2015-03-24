@@ -16,6 +16,7 @@
         <Cell><Data ss:Type="String">Need</Data></Cell>
         <Cell><Data ss:Type="String">Item</Data></Cell>
         <Cell><Data ss:Type="String">Skill</Data></Cell>
+        <Cell><Data ss:Type="String">Paid</Data></Cell>
       </Row>
     <% @signups.each do |signup| %>
       <Row>
@@ -28,6 +29,7 @@
         <Cell><Data ss:Type="String"><%= signup.need  && signup.need.description  || '' %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.item  && signup.item.description  || '' %></Data></Cell>
         <Cell><Data ss:Type="String"><%= signup.skill && signup.skill.description || '' %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= signup.paid ? 'yes' : 'no' %></Data></Cell>
       </Row>
     <% end %>
     </Table>

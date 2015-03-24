@@ -39,9 +39,11 @@ class Signup < ActiveRecord::Base
       csv << column_names
       all.each do |signup|
         attrs = signup.attributes.values_at(*column_names)
-        attrs[3] = Barterable.find(attrs[3]).description
-        attrs[4] = Barterable.find(attrs[4]).description
+        attrs[3] = Barterable.find(attrs[3]).description if attrs[3]
+        attrs[4] = Barterable.find(attrs[4]).description if attrs[4]
         attrs[7] = I18n.l Event.find(attrs[7]).event_begin_time, format: :event_date
+        attrs[9] = Barterable.find(attrs[9]).description if attrs[9]
+        attrs[10] = Barterable.find(attrs[10]).description if attrs[10]
         csv << attrs
       end
     end

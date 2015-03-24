@@ -19,6 +19,8 @@
         Item
       %th
         Skill
+      %th
+        Paid
   %tbody
     - @signups.each do |signup|
       %tr
@@ -31,4 +33,5 @@
         %td= signup.need  && signup.need.description  || ''
         %td= signup.item  && signup.item.description  || ''
         %td= signup.skill && signup.skill.description || ''
+        %td= signup.paid ? 'yes' : 'no'
 
