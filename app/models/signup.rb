@@ -19,7 +19,10 @@ class Signup < ActiveRecord::Base
                     length: { maximum: 255 },
                     format: { with: email_regex }
 
-  validates :stripe_token, presence: true, unless: Proc.new {|signup| signup.event.free? }
+  validates :stripe_token, presence: true,
+                          on: :update,
+                          unless: Proc.new {|signup| signup.event.free? }
+
 
   validates_uniqueness_of :email,
                           scope: :event_id,

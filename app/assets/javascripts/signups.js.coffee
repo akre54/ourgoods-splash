@@ -9,22 +9,11 @@ $ ->
   resizeColumn = ->
     $('.right-col').height $('.right-col h1').height() + $('.active').height()
 
-  # The currently active selected event id
-  idx = 0
-  evt = OG.activeEvents[idx]
-  paid = false
 
   updateShownEvent = ->
     idx = $('[name="signup[event_id]"]:checked').parent().index()
-    evt = OG.activeEvents[idx]
     $('.venue-address').hide()
     $('.venue-address').eq(idx).show()
-
-    showOpenPayment = evt?.price > 0 and !paid
-
-    $('.open-payment').toggle showOpenPayment
-    $('.btn-submit').toggle !showOpenPayment
-
 
   flipPage = ->
     $('.flip-container').toggleClass 'flipped'
@@ -47,7 +36,7 @@ $ ->
     $parent.remove()
     resizeColumn()
 
-  $(document).on 'ajax:complete', '#new_signup', (ev, xhr) ->
+  $(document).on 'ajax:complete', '#new_signup, .edit_signup', (ev, xhr) ->
     rightCol = $(xhr.responseText).find '.right-col'
     $('.right-col').replaceWith rightCol
     updateShownEvent()
@@ -60,29 +49,27 @@ $ ->
 
 
   handler = StripeCheckout.configure
-    key: OG.Stripe.key
+    key: window.OG.stripe_key
     image: '/assets/ourgoods_logo.png'
     token: (token) ->
       # Use the token to create the charge with a server-side script.
       # You can access the token ID with `token.id`
 
-      paid = true
-
       updateShownEvent()
 
       $('#signup_stripe_token').val token.id
 
-      $('#new_signup').submit()
+      $('.edit_signup').submit()
 
-  $('.open-payment').on 'click', (e) ->
-    evtPrice = +evt.price
+  $(document).on 'click', '.open-payment', (e) ->
+    eventPrice = +$('#signup_event_price').val()
 
     # Open Checkout with further options
     handler.open
       name: "OurGoods Idea Lab"
       email: $("#signup_email").val()
-      description: "1 ticket ($#{evtPrice.toFixed(2)})"
-      amount: evtPrice * 100
+      description: "1 ticket ($#{eventPrice.toFixed(2)})"
+      amount: eventPrice * 100
 
     e.preventDefault()
 
