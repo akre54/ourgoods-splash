@@ -21,6 +21,7 @@
 
   = form_for(@signup, remote: true, url: charges_path, html: { role: 'form' }) do |f|
     .page
+      = f.hidden_field :email, value: @signup.email
       = f.fields_for(:event, include_id: false) do |ef|
         = ef.hidden_field :price, value: @signup.event.price
       = f.hidden_field :stripe_token, value: nil
