@@ -1,28 +1,29 @@
 = render 'layouts/left_col'
 .right-col.col-md-5.col-sm-offset-1
   %h2
-    Thanks! One more step.
+    Almost Done!
 
   %p
-    This event requires a
+    Tickets to this Idea Lab are
     = number_to_currency @signup.event.price
-    donation. Your signup won't get processed until the payment is complete.
+    . Your space isn’t reserved until your signup is complete!
 
   %p
-    We use <a href="https://stripe.com/">Stripe</a> to process your credit card
-    securely off-site. No credit card info is stored with us.
+    We use <a href="https://stripe.com/">Stripe</a> to process your credit
+    card securely off-site. No credit card info is stored with us.
 
   %p
-    Click below to launch a popup and enter your credit card info. Your email
-    must match the one you provided us with on the previous screen. If you
-    can't see the popup or something is wrong, contact Adam Krebs at
+    Your email must match the one you provided us with on the previous screen.
+
+  %p
+    If you can't see the popup or something is wrong, contact Adam Krebs at
     adam.krebs@nyu.edu.
 
   = form_for(@signup, remote: true, url: charges_path, html: { role: 'form' }) do |f|
-
-    = f.fields_for(:event, include_id: false) do |ef|
-      = ef.hidden_field :price, value: @signup.event.price
-    = f.hidden_field :stripe_token, value: nil
-    %noscript
-      This checkout form requires Javascript to work. Please enable Javascript in your browser or contact jen@ourgoods.org for assistance.
-    = f.button "Pay Now", type: "submit", class: "btn btn-success btn-med open-payment btn-submit"
+    .page
+      = f.fields_for(:event, include_id: false) do |ef|
+        = ef.hidden_field :price, value: @signup.event.price
+      = f.hidden_field :stripe_token, value: nil
+      %noscript
+        This checkout form requires Javascript to work. Please enable Javascript in your browser or contact jen@ourgoods.org for assistance.
+      = f.button "Pay Now", type: "submit", class: "btn btn-success btn-med open-payment btn-submit"
