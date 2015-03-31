@@ -3,24 +3,25 @@
   %h2
     Almost Done!
 
-  %p
-    Tickets to this Idea Lab are
-    = number_to_currency @signup.event.price
-    Your space isn’t reserved until your signup is complete!
+  .page.new-charge
 
-  %p
-    We use <a href="https://stripe.com/">Stripe</a> to process your credit
-    card securely off-site. No credit card info is stored with us.
+    %p
+      Tickets to this Idea Lab are
+      = number_to_currency @signup.event.price
+      Your space isn’t reserved until your signup is complete!
 
-  %p
-    Your email must match the one you provided us with on the previous screen.
+    %p
+      We use <a href="https://stripe.com/">Stripe</a> to process your credit
+      card securely off-site. No credit card info is stored with us.
 
-  %p
-    If you can't see the popup or something is wrong, contact Adam Krebs at
-    adam.krebs@nyu.edu.
+    %p
+      Your email must match the one you provided us with on the previous screen.
 
-  = form_for(@signup, remote: true, url: charges_path, html: { role: 'form' }) do |f|
-    .page
+    %p
+      If you can't see the popup or something is wrong, contact Adam Krebs at
+      adam.krebs@nyu.edu.
+
+    = form_for(@signup, remote: true, url: charges_path, html: { role: 'form' }) do |f|
       = f.hidden_field :email, value: @signup.email
       = f.fields_for(:event, include_id: false) do |ef|
         = ef.hidden_field :price, value: @signup.event.price
