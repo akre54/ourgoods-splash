@@ -9,12 +9,7 @@
           %p.current 1
           %p 2
         .flipper-contain
-          - flash.each do |type, messages|
-            %div{class: "alert #{bootstrap_class_for(type)} fade in"}
-              %button.close{ data: { dismiss: "alert" }} ×
-              %ul
-                - messages.each do |text|
-                  %li= text
+          = render 'errors'
           %h3 My contact info
           .form-group
             = f.text_field :name, class: "form-control", placeholder: "Name"

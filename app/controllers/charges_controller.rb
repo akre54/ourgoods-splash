@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
       redirect_to success_path
     else
       flash.now[:error] = @signup.errors.full_messages
-      render 'signups/new', status: :unprocessable_entity
+      render 'charges/new', status: :unprocessable_entity
     end
 
 

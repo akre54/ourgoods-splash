@@ -55,7 +55,7 @@ private
     return unless self.errors.empty?
 
     if community.blank? && !item.present? && !skill.present?
-      self.errors[:base] << "This page looks great! Please click next page and answer one question."
+      self.errors[:base] << "This page looks great! Please click next page and answer at least one of the questions."
     end
   end
 end

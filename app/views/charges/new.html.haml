@@ -5,6 +5,8 @@
 
   .page.new-charge
 
+    = render 'signups/errors'
+
     %p
       Tickets to this Idea Lab are
       = number_to_currency @signup.event.price
