@@ -21,13 +21,7 @@ class ChargesController < ApplicationController
       flash.now[:error] = @signup.errors.full_messages
       render 'charges/new', status: :unprocessable_entity
     end
-
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to charges_path
   end
-
 
 private
   def charge_params
@@ -69,7 +63,7 @@ private
       puts "Param is: #{err[:param]}"
       puts "Message is: #{err[:message]}"
 
-      @signup.errors.add :name, err[:message]
+      @signup.errors.add :card, err[:message]
 
       return
 
